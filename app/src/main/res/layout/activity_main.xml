@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#12080000"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="☯ 数 字 卦" android:textColor="#FFD700" android:textSize="34sp"
+            android:textStyle="bold" android:gravity="center" android:fontFamily="serif"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="梅花易数 · 数字起卦" android:textColor="#C0A060"
+            android:textSize="13sp" android:gravity="center" android:layout_marginBottom="28dp"/>
+
+        <!-- Tab -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="48dp"
+            android:orientation="horizontal" android:background="#2a1500"
+            android:padding="4dp" android:layout_marginBottom="20dp">
+            <TextView android:id="@+id/tab_phone" android:layout_width="0dp"
+                android:layout_height="match_parent" android:layout_weight="1"
+                android:text="手机号起卦" android:gravity="center"
+                android:textColor="#FFD700" android:textSize="15sp" android:background="#3a2000"/>
+            <TextView android:id="@+id/tab_three" android:layout_width="0dp"
+                android:layout_height="match_parent" android:layout_weight="1"
+                android:text="三组数字起卦" android:gravity="center"
+                android:textColor="#FFD700" android:textSize="15sp"/>
+        </LinearLayout>
+
+        <!-- 手机号 -->
+        <LinearLayout android:id="@+id/layout_phone" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="手机号码（11位）" android:textColor="#C0A060"
+                android:textSize="14sp" android:layout_marginBottom="8dp"/>
+            <EditText android:id="@+id/et_phone" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="例：13812345678"
+                android:inputType="phone" android:textColor="#FFFFFF" android:textColorHint="#555555"
+                android:textSize="18sp" android:padding="14dp" android:background="#2a1500"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="规则：前半段数字和÷8取余→上卦 | 后半段数字和÷8取余→下卦 | 全部数字和÷6取余→动爻"
+                android:textColor="#666666" android:textSize="12sp" android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+        <!-- 三组数字 -->
+        <LinearLayout android:id="@+id/layout_three" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:visibility="gone">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="第一组数字 → 下卦（÷8取余）" android:textColor="#C0A060"
+                android:textSize="14sp" android:layout_marginBottom="8dp"/>
+            <EditText android:id="@+id/et_num1" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="例：736"
+                android:inputType="number" android:textColor="#FFFFFF" android:textColorHint="#555555"
+                android:textSize="18sp" android:padding="14dp" android:background="#2a1500"
+                android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="第二组数字 → 上卦（÷8取余）" android:textColor="#C0A060"
+                android:textSize="14sp" android:layout_marginBottom="8dp"/>
+            <EditText android:id="@+id/et_num2" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="例：412"
+                android:inputType="number" android:textColor="#FFFFFF" android:textColorHint="#555555"
+                android:textSize="18sp" android:padding="14dp" android:background="#2a1500"
+                android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="第三组数字 → 动爻（÷6取余）" android:textColor="#C0A060"
+                android:textSize="14sp" android:layout_marginBottom="8dp"/>
+            <EditText android:id="@+id/et_num3" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="例：25"
+                android:inputType="number" android:textColor="#FFFFFF" android:textColorHint="#555555"
+                android:textSize="18sp" android:padding="14dp" android:background="#2a1500"/>
+        </LinearLayout>
+
+        <Button android:id="@+id/btn_calc" android:layout_width="match_parent"
+            android:layout_height="58dp" android:text="⚡ 起　卦"
+            android:textSize="20sp" android:textColor="#1a0800" android:textStyle="bold"
+            android:backgroundTint="#FFD700" android:layout_marginTop="28dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- 结果 -->
+        <LinearLayout android:id="@+id/layout_result" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:visibility="gone" android:background="#2a1500" android:padding="18dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="━━━ 卦象结果 ━━━" android:textColor="#FFD700"
+                android:textSize="16sp" android:textStyle="bold" android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+            <TextView android:id="@+id/tv_lines" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#EEEEEE"
+                android:textSize="17sp" android:fontFamily="monospace"
+                android:lineSpacingExtra="6dp" android:layout_marginBottom="16dp"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="#444444" android:layout_marginBottom="16dp"/>
+            <TextView android:id="@+id/tv_hexagram" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#FFD700"
+                android:textSize="20sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+            <TextView android:id="@+id/tv_upper" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#E0C080"
+                android:textSize="15sp" android:layout_marginBottom="4dp"/>
+            <TextView android:id="@+id/tv_lower" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#E0C080"
+                android:textSize="15sp" android:layout_marginBottom="12dp"/>
+            <TextView android:id="@+id/tv_moving" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#FFA040"
+                android:textSize="16sp" android:layout_marginBottom="4dp"/>
+            <TextView android:id="@+id/tv_changed" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#90EE90"
+                android:textSize="16sp" android:layout_marginBottom="16dp"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="#444444" android:layout_marginBottom="12dp"/>
+            <TextView android:id="@+id/tv_meaning" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#BBBBBB"
+                android:textSize="14sp" android:lineSpacingExtra="4dp"/>
+        </LinearLayout>
+
+        <!-- 八卦速查 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="#2a1500"
+            android:padding="16dp" android:layout_marginTop="16dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="先天八卦数对照" android:textColor="#FFD700"
+                android:textSize="14sp" android:gravity="center" android:layout_marginBottom="10dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="1乾☰   2兑☱   3离☲   4震☳&#10;5巽☴   6坎☵   7艮☶   8坤☷"
+                android:textColor="#C0A060" android:textSize="15sp" android:fontFamily="monospace"
+                android:lineSpacingExtra="8dp" android:gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
